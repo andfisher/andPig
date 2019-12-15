@@ -13,7 +13,7 @@ final class Manager
     const GAME_STATE_PLAYING = 1;
     const GAME_STATE_WON = 2;
 
-    const SCORE_TARGET = 100;
+    const SCORE_TARGET = 30;
 
     private $players;
     private $activePlayer;
@@ -37,6 +37,11 @@ final class Manager
         return $this->players[$this->activePlayer];
     }
 
+    public function getState(): int
+    {
+        return $this->currentState;
+    }
+
     public function getPlayers(): array
     {
         return $this->players;
@@ -57,6 +62,8 @@ final class Manager
 
     public function roll()
     {
+        $this->currentState = self::GAME_STATE_PLAYING;
+
         try {
             $this->getActivePlayer()->takeTurn();
         } catch (TurnEndException $pte) {

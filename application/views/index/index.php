@@ -17,9 +17,26 @@
         <?php endforeach; ?>
 
         <form action="/" method="post">
-            Active Player <?php echo $activePlayer->getId(); ?>
-            <input type="submit" name="roll" value="Roll">
-            <input type="submit" name="pass" value="Pass">
+            <?php if ($state === Game\Manager::GAME_STATE_WON): ?>
+            <p>
+                PLAYER <?php echo $activePlayer->getId(); ?> WINS!
+                Game Over!
+            </p>
+            <?php else: ?>
+            <fieldset>
+                <legend>Active Player: <?php echo $activePlayer->getId(); ?></legend>
+                <input type="submit" name="roll" value="Roll">
+                <input type="submit" name="pass" value="Pass">
+            </fieldset>
+            <?php endif; ?>
+
+
+            <div id="dice">
+                <h2>Roll Score:</h2>
+                <?php if ($state !== Game\Manager::GAME_STATE_PENDING): ?>
+                <?php echo implode(',', $dice->lastRolls()); ?>
+                <?php endif; ?>
+            </div>
 
             <br>
             <br>

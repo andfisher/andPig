@@ -6,6 +6,7 @@ class Die6 implements DieInterface
 	protected $max = 6;
 
 	private $rolls;
+    private $lastRolls;
 
 	public function __construct(int $rolls = 1)
 	{
@@ -18,6 +19,14 @@ class Die6 implements DieInterface
 		for ($i = 0; $i < $this->rolls; $i++) {
 			$rolls[] = rand($this->min, $this->max);
 		}
+
+        $this->lastRolls = $rolls;
+
 		return $rolls;
 	}
+
+    public function lastRolls(): array
+    {
+        return $this->lastRolls;
+    }
 }

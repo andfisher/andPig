@@ -64,6 +64,11 @@ class Player implements \Player\PlayerInterface, \JsonSerializable
 		}
 	}
 
+    public function getDice()
+    {
+        return $this->dice;
+    }
+
     public function reset(): void
     {
         $this->roundScores = [];

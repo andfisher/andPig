@@ -38,6 +38,8 @@ class Welcome extends CI_Controller
 		$this->load->view('index/index', [
             'players' => $this->manager->getPlayers(),
             'activePlayer' => $this->manager->getActivePlayer(),
+            'state' => $this->manager->getState(),
+            'dice' => $this->manager->getActivePlayer()->getDice(),
         ]);
 	}
 

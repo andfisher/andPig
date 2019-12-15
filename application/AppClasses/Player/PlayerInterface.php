@@ -16,4 +16,6 @@ interface PlayerInterface
     public function reset(): void;
 
     public function getId(): int;
+
+    public function getDice();
 }
