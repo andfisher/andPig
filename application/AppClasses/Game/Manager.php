@@ -13,7 +13,7 @@ final class Manager
     const GAME_STATE_PLAYING = 1;
     const GAME_STATE_WON = 2;
 
-    const SCORE_TARGET = 30;
+    const SCORE_TARGET = 100;
 
     private $players;
     private $activePlayer;
