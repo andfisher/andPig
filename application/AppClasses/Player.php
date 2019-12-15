@@ -1,6 +1,6 @@
 <?php
 
-class Player implements \Player\PlayerInterface, \JsonSerializable
+class Player implements \Player\PlayerInterface
 {
 	private $active;
 	private $dice;
@@ -73,28 +73,5 @@ class Player implements \Player\PlayerInterface, \JsonSerializable
     {
         $this->roundScores = [];
         $this->activeRound = 0;
-    }
-
-    public function fromJson(string $json): void
-    {
-        $obj = json_decode($json);
-        $this->id = $obj->id;
-        $this->active = $obj->active;
-        $this->roundScores = $obj->roundScores;
-        $this->activeRound = $obj->activeRound;
-    }
-
-    /**
-     * @desc For exporting state, this class can be json encoded.
-     * @return stdClass
-     */
-    public function jsonSerialize(): stdClass
-    {
-        return (object) [
-            'id' => $this->id,
-            'active' => $this->active,
-            'roundScores' => $this->roundScores,
-            'activeRound' => $this->activeRound,
-        ];
     }
 }

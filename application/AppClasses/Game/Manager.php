@@ -27,7 +27,7 @@ final class Manager
         $this->currentState = $currentState;
     }
 
-    public function addPlayer(PlayerInterface $player): void
+    public function addPlayer(\Player\PlayerInterface $player): void
     {
         $this->players[] = $player;
     }
@@ -55,7 +55,7 @@ final class Manager
     public function getPlayer(int $i)
     {
         if ($i >= count($this->players)) {
-            throw new Exception('Index out of bounds');
+            throw new \Exception('Index out of bounds');
         }
         return $this->players[$i];
     }
